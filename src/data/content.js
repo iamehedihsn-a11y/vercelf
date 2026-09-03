@@ -235,4 +235,43 @@ export const music = {
   spotifyEmbedUrl: '',
 }
 
-export default { profile, skills, projects, experience, testimonials, gallery, music }
+export const certifications = [
+  {
+    title: 'Meta Front-End Developer Professional Certificate',
+    issuer: 'Meta',
+    issueDate: '2024',
+    credentialId: 'META-FED-2024-889',
+    credentialUrl: 'https://coursera.org/verify/professional-cert',
+    imageUrl: '',
+    emoji: '⚛️',
+    skills: ['React', 'JavaScript', 'HTML5 & CSS3', 'UI/UX', 'Responsive Design'],
+    description:
+      'Comprehensive 9-course program covering modern front-end development, component architecture, testing, and responsive UI engineering.',
+  },
+  {
+    title: 'AWS Certified Solutions Architect – Associate',
+    issuer: 'Amazon Web Services',
+    issueDate: '2023',
+    credentialId: 'AWS-SAA-839201',
+    credentialUrl: 'https://aws.amazon.com/verification',
+    imageUrl: '',
+    emoji: '☁️',
+    skills: ['AWS', 'Cloud Architecture', 'Serverless', 'Security', 'S3 & Lambda'],
+    description:
+      'Demonstrated expertise in architecting resilient, secure, high-performing, and cost-optimized distributed systems on AWS.',
+  },
+  {
+    title: 'Google Professional Cloud Developer',
+    issuer: 'Google Cloud',
+    issueDate: '2023',
+    credentialId: 'GCP-PCD-491028',
+    credentialUrl: 'https://cloud.google.com/certification',
+    imageUrl: '',
+    emoji: '⚡',
+    skills: ['GCP', 'Kubernetes', 'Microservices', 'Docker', 'DevOps'],
+    description:
+      'Certified in building scalable cloud-native applications, deploying containerized microservices, and managing cloud storage & databases.',
+  },
+]
+
+export default { profile, skills, certifications, projects, experience, testimonials, gallery, music }

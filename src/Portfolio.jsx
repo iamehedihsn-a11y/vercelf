@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
+import Certifications from './components/Certifications'
 import Gallery from './components/Gallery'
 import Projects from './components/Projects'
 import Experience from './components/Experience'
@@ -24,6 +25,7 @@ export default function Portfolio() {
         <Hero />
         <About />
         <Skills />
+        <Certifications />
         <Gallery />
         <Projects />
         <Experience />

@@ -69,6 +69,7 @@ export function DataProvider({ children }) {
     profile: mapProfile(null, content.profile),
     socials: content.profile.socials,
     skills: content.skills,
+    certifications: content.certifications,
     music: content.music,
     projects: content.projects,
     experience: content.experience,
@@ -97,6 +98,7 @@ export function DataProvider({ children }) {
           musicTracks,
           skillRows,
           skillSettings,
+          certifications,
         ] = await Promise.all([
           supabase.from('profile').select('*').eq('id', 1).maybeSingle(),
           supabase.from('projects').select('*').order('sort_order'),
@@ -108,12 +110,28 @@ export function DataProvider({ children }) {
           supabase.from('music_tracks').select('*').order('sort_order'),
           supabase.from('skills').select('*').order('sort_order'),
           supabase.from('skills_settings').select('*').eq('id', 1).maybeSingle(),
+          supabase.from('certifications').select('*').order('sort_order'),
         ])
 
         setData({
           profile: mapProfile(prof.data, content.profile),
           socials: mapRows(socials.data, [['label', 'label'], ['url', 'url']], content.profile.socials),
           skills: mapSkills(skillRows.data, skillSettings.data, content.skills),
+          certifications: mapRows(
+            certifications.data,
+            [
+              ['title', 'title'],
+              ['issuer', 'issuer'],
+              ['issue_date', 'issueDate'],
+              ['credential_id', 'credentialId'],
+              ['credential_url', 'credentialUrl'],
+              ['image_url', 'imageUrl'],
+              ['emoji', 'emoji'],
+              ['skills', 'skills'],
+              ['description', 'description'],
+            ],
+            content.certifications,
+          ),
           music: {
             ...content.music,
             vibe: musicSettings.data?.vibe ?? content.music.vibe,
@@ -163,6 +181,7 @@ export function DataProvider({ children }) {
           profile: mapProfile(null, content.profile),
           socials: content.profile.socials,
           skills: content.skills,
+          certifications: content.certifications,
           music: content.music,
           projects: content.projects,
           experience: content.experience,

@@ -44,11 +44,12 @@ export default function ListEditor({ table, fields, title, hint }) {
     title: 200, name: 100, label: 100, role: 200, company: 200, period: 200,
     quote: 3000, description: 6000, vibe: 300, emoji: 32, duration: 50,
     alt: 300, caption: 300, group_title: 100, group_emoji: 32,
+    issuer: 200, credential_id: 200, issue_date: 100,
     url: 500, cover_url: 500, audio_url: 500, src: 500, demo: 500, repo: 500,
   }
   const MAX_ARRAY_ITEMS = 50
-  // Per-column item length limits — must match the DB trigger (tags: 100, points: 2000)
-  const MAX_ARRAY_ITEM_LEN = { tags: 100, points: 2000 }
+  // Per-column item length limits — must match the DB trigger (tags: 100, points: 2000, skills: 100)
+  const MAX_ARRAY_ITEM_LEN = { tags: 100, points: 2000, skills: 100 }
   // Strict URL fields must be empty, an anchor, or an http(s) URL — never javascript:/data:/etc.
   const STRICT_URL = /^\s*(?:https?:\/\/|#|$)/i
   // Social URLs may be scheme-less (socialUrl() prepends https://), but never allow script schemes.

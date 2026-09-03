@@ -31,6 +31,17 @@ const fieldDefs = {
     { key: 'name', label: 'Skill name' },
     { key: 'level', label: 'Level (%)', type: 'number' },
   ],
+  certifications: [
+    { key: 'title', label: 'Title / Certificate name' },
+    { key: 'issuer', label: 'Issuer / Organization' },
+    { key: 'issue_date', label: 'Issue date / Year' },
+    { key: 'credential_id', label: 'Credential ID' },
+    { key: 'credential_url', label: 'Credential verification URL' },
+    { key: 'image_url', label: 'Badge / Certificate image', type: 'image', cropAspect: 4 / 3 },
+    { key: 'emoji', label: 'Emoji' },
+    { key: 'skills', label: 'Skills / Topics', type: 'array', separator: ',' },
+    { key: 'description', label: 'Description', type: 'textarea' },
+  ],
   gallery: [
     { key: 'src', label: 'Photo', type: 'image' },
     { key: 'alt', label: 'Alt text' },
@@ -63,6 +74,7 @@ const tabs = [
   { id: 'projects', label: '💼 Projects', hint: 'Reorder with ▲ ▼, save after edits' },
   { id: 'experience', label: '🛠️ Experience', hint: 'Job history & highlights' },
   { id: 'skills', label: '🧰 Skills', hint: 'Add skills + levels, group them, and edit the scrolling marquee' },
+  { id: 'certifications', label: '📜 Certifications', hint: 'Licenses, courses, degrees & certifications' },
   { id: 'gallery', label: '📸 Gallery', hint: 'Upload photos (crop before saving) straight to Supabase Storage' },
   { id: 'testimonials', label: '💬 Testimonials', hint: 'Kind words from clients' },
   { id: 'socials', label: '🔗 Socials', hint: 'Links shown in the contact section' },
@@ -161,6 +173,14 @@ export default function AdminPanel({ session }) {
               />
             </div>
           </>
+        )}
+        {tab === 'certifications' && (
+          <ListEditor
+            table="certifications"
+            fields={fieldDefs.certifications}
+            title="Certifications"
+            hint="Add your certifications, degrees, and licenses. Upload a badge or certificate image (4:3 recommended) and provide verification links."
+          />
         )}
         {tab === 'gallery' && <ListEditor table="gallery" fields={fieldDefs.gallery} title="Gallery" hint="Upload photos — they go to your public 'photos' storage bucket." />}
         {tab === 'testimonials' && <ListEditor table="testimonials" fields={fieldDefs.testimonials} title="Testimonials" hint="Quotes shown in the testimonials section." />}
